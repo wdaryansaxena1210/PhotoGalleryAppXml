@@ -13,8 +13,7 @@ class PhotoAPI(context: Context) {
     var mostRecentPhotosDto = PhotosDto()
 
 
-    suspend fun getMostViewedPhotos(): PhotosDto {
-        println("fetching most viewed photos")
+    suspend fun fetchMostViewedPhotos() {
 
         val jsonRequest = JsonArrayRequest(
             Request.Method.GET,
@@ -22,7 +21,6 @@ class PhotoAPI(context: Context) {
             null,
             {response ->
                 println("entering most viewed photos response callback")
-                println(response)
                 val photos = mutableListOf<PhotoDto>()
 
                 for(i in 0 until response.length()){
@@ -41,9 +39,9 @@ class PhotoAPI(context: Context) {
                     )
                 }
 
-                println(photos)
-
                 mostViewedPhotosDto = PhotosDto(photos = photos)
+
+                println("mostViewedPhotosDto: $mostViewedPhotosDto")
 
             },
             {error ->
@@ -52,15 +50,13 @@ class PhotoAPI(context: Context) {
         )
 
         queue.add(jsonRequest)
-        println("most viewed photos fetched")
+    }
 
-        println(mostViewedPhotosDto)
+    fun getMostViewedPhotos(): PhotosDto {
         return mostViewedPhotosDto
     }
 
-
-    suspend fun getMostRecentPhotos(): PhotosDto {
-        println("fetching most recent photos")
+    suspend fun fetchMostRecentPhotos(): PhotosDto {
 
         val jsonRequest = JsonArrayRequest(
             Request.Method.GET,
@@ -68,7 +64,6 @@ class PhotoAPI(context: Context) {
             null,
             {response ->
                 println("entering most recent photos response callback")
-                println(response)
                 val photos = mutableListOf<PhotoDto>()
 
                 for(i in 0 until response.length()){
@@ -96,8 +91,10 @@ class PhotoAPI(context: Context) {
         )
 
         queue.add(jsonRequest)
-        println("most recent photos fetched")
+        return mostRecentPhotosDto
+    }
 
+    fun getMostRecentPhotos(): PhotosDto {
         return mostRecentPhotosDto
     }
 }
