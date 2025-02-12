@@ -9,7 +9,6 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.photogalleryxml.R
 import com.example.photogalleryxml.data.remote.PhotoDto
 import com.example.photogalleryxml.data.remote.PhotosDto
-import com.example.photogalleryxml.domain.photos.PhotosData
 import com.squareup.picasso.Picasso
 
 class PhotoAdapter(private val data: PhotosDto) : RecyclerView.Adapter<PhotoAdapter.ViewHolder>(){

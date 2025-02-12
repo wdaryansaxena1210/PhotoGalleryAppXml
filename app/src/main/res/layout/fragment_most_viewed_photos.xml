@@ -9,8 +9,14 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/frame_layout">
+        android:layout_height="match_parent" >
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/ColumnRecyclerView"
+            android:layout_marginTop="32dp">
+        </androidx.recyclerview.widget.RecyclerView>
     </FrameLayout>
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
