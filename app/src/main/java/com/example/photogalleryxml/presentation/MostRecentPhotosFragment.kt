@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.lifecycleScope
+import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.photogalleryxml.R
@@ -25,7 +26,7 @@ class MostRecentPhotosFragment : Fragment() {
 
         recyclerView = view.findViewById(R.id.ColumnRecyclerView) // Find RecyclerView inside Fragment
         recyclerView.setHasFixedSize(true)
-        recyclerView.layoutManager = LinearLayoutManager(requireContext())
+        recyclerView.layoutManager = GridLayoutManager(requireContext(), 2)
 
         viewModel = PhotoViewModel(requireContext())
 
@@ -36,7 +37,6 @@ class MostRecentPhotosFragment : Fragment() {
                 }
             }
         }
-
         return view
     }
 }
